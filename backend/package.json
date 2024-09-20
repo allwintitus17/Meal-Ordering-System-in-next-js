@@ -1,0 +1,21 @@
+{
+  "name": "mealordersystem",
+  "version": "1.0.0",
+  "description": "\"the meal ordering system for employees or admin\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "allwin",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "cors": "2.8.5",
+    "express": "4.21.0",
+    "jsonwebtoken": "9.0.2",
+    "middleware": "1.0.0",
+    "mongoose": "8.6.2",
+    "nodemon": "3.1.4",
+    "validator": "13.12.0"
+  }
+}
