@@ -51,8 +51,23 @@ const getAllMealsOrder=async(req,res)=>{
     }
 }
 
+const getUsersByLocation = async (req, res) => {
+    const location = req.params.location; 
+    try {
+       
+        const users = await User.find({ location: location });
+        if (!users || users.length === 0) {
+            return res.status(404).json({ message: `No users found in ${location}` });
+        }
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error', error: error.message });
+    }
+};
+
 module.exports={
     createMeals,
     getAllMealsOrder,
+    getUsersByLocation,
     
 }

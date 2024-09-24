@@ -40,6 +40,20 @@ export const getMeals = createAsyncThunk(
   }
 );
 
+
+export const getUsersByLocation=createAsyncThunk('meals/getUsersByLocation',
+  async(_,thunkAPI)=>{
+    try{
+      const token=thunkAPI.getState().auth.user.token;
+      return await mealsService.getUsersByLocation(token);
+    }catch(error){
+      const message=(error.response?.data?.message) ||error.message||error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+
+)
+
 // Slice
 const mealSlice = createSlice({
   name: 'meals',
@@ -87,6 +101,21 @@ const mealSlice = createSlice({
         state.isError = true;
         state.message = action.payload || 'Error fetching meals';
         state.isSuccess = false;
+      })
+      .addCase(getUsersByLocation.pending,(state)=>{
+        state.isLoading=true;
+        state.isSuccess=false;
+      })
+      .addCase(getUsersByLocation.fulfilled,(state,action)=>{
+        state.isLoading=false;
+        state.isSuccess=true;
+        state.meals=action.payload;
+      })
+      .addCase(getUsersByLocation.rejected,(state,action)=>{
+        state.isLoading=false;
+        state.isError=true;
+        state.message=action.payload||'Error in Fetching meals';
+        state.isSuccess=false;
       });
   },
 });

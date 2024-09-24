@@ -39,11 +39,27 @@ const getMeals = async (token) => {
   }
 };
 
+const getUsersByLocation=async(token)=>{
+  const config={
+    headers:{
+      Authorization :`Bearer ${token}`,
+    },
+  };
+  try{
+    const response=await axios.get(`${API_URL}users/:location`,config);
+    return response.data;
+
+  }catch(error){
+    throw new Error(error.response?.data?.message || error.message || 'Failed to get meals');
+  }
+}
+
 
 
 const mealsService = {
   createMeal,
   getMeals,
+  getUsersByLocation
  
 };
 
