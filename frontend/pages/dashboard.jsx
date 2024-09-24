@@ -21,7 +21,7 @@ const Dashboard = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   if (isError) {

@@ -10,7 +10,7 @@ const createMeals = async (req, res) => {
     };
 
     // Calculate the total amount based on the selected meals
-    const selectedMeals = req.body.mealType || [];
+    const selectedMeals = req.body?.mealType || [];
     let totalAmount = 0;
 
     selectedMeals.forEach(meal => {
