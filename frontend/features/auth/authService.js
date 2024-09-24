@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Set base URL for axios, ensuring there's no trailing slash
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://localhost:5000/api/users/';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://meal-ordering-system-in-next-js.vercel.app/api/users/';
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
 });
