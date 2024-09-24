@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Base URL for the API
 const API_URL = '/api/meals/'; 
-axios.defaults.baseURL = 'https://meal-ordering-system-in-next-js.vercel.app/';
+axios.defaults.baseURL = 'http://localhost:5000';
 
 // Create a new meal
 const createMeal = async (mealData, token) => {
